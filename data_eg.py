@@ -63,6 +63,7 @@ opt.add_experimental_option("prefs", {
     "profile.default_content_setting_values.geolocation": 0,
     "profile.default_content_setting_values.notifications": 1
 })
+alertWords = [ "godizon", "are you there", "unmute yourself", "say something", "can you hear me","11","eleven"]
 driver = webdriver.Chrome(executable_path='C:\\Users\\Administrator\\Downloads\Compressed\\chromedriver_win32\\chromedriver.exe',options=opt)
 # login to Google account
 
