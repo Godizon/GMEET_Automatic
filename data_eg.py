@@ -63,7 +63,7 @@ opt.add_experimental_option("prefs", {
     "profile.default_content_setting_values.geolocation": 0,
     "profile.default_content_setting_values.notifications": 1
 })
-alertWords = [ "godizon", "are you there", "unmute yourself", "say something", "can you hear me","11","eleven"]
+alertWords = [ "godizon.", "are you there.", "unmute yourself.", "say something.", "can you hear me.","11.","eleven.","attendance.","attendance"]
 driver = webdriver.Chrome(executable_path='C:\\Users\\Administrator\\Downloads\Compressed\\chromedriver_win32\\chromedriver.exe',options=opt)
 # login to Google account
 
@@ -93,8 +93,12 @@ driver.implicitly_wait(5000)
 
 while True:
     try:
-        elems = driver.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[9]/div[3]/div[7]/div[1]/div[1]/div/div[2]/div/span/span')
+        elems = driver.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[9]/div[3]/div[7]/div/div[2]/div/span[3]/span')
         captioTextLower = str(elems.text).lower()
-        print(captioTextLower)
+        for word in alertWords:
+            if word in captioTextLower:
+                driver.get('https://youtube.com')
+                time.sleep(2)
+        time.sleep(0.5)
     except (NoSuchElementException, StaleElementReferenceException):
         time.sleep(1)
